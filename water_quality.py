@@ -45,11 +45,11 @@ else:
     st.write("Failed to load animation")
 
 # Loading the models 
-clf_model = joblib.load("D:\Water_Quality\Water Quality\clf")
-decision_tree_model = joblib.load("D:\Water_Quality\Water Quality\decision_tree")
-knn_model = joblib.load("D:\Water_Quality\Water Quality\knn")
-log_reg_model = joblib.load("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System-\log_reg")
-svm_model = joblib.load("D:\Water_Quality\Water Quality\svm")
+clf_model = joblib.load("D:\Water Potability System (AI)'24\water-potability-prediction-system\clf")
+decision_tree_model = joblib.load("D:\Water Potability System (AI)'24\water-potability-prediction-system\decision_tree")
+knn_model = joblib.load("D:\Water Potability System (AI)'24\water-potability-prediction-system\knn")
+log_reg_model = joblib.load("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System\log_reg")
+svm_model = joblib.load("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System\svm")
 
 # Define the columns
 columns = ['ph', 'Hardness', 'Solids', 'Chloramines', 'Sulfate', 'Conductivity', 'Organic_carbon',
@@ -71,7 +71,7 @@ with st.sidebar:
 if choose=='About':
     st.write('### Water Potability System About:')
     st.write('---')
-    st.write("##### Access to safe drinking-water is essential to health, a basic human right and a component of effective policy for health protection.\n ##### This is important as a health and development issue at a national, regional, and local level.\n ##### In some regions, it has been shown that investments in water supply and sanitation can yield a net economic benefit, since the reductions in adverse health effects and health care costs outweigh the costs of undertaking the interventions.\n ##### This classification project involves building a model to evaluate water potability to help you access safe drinking water. 💙🚰")
+    st.write("##### Access to safe drinking-water is essential to health, a basic human right and a component of effective policy for health protection.\n ##### This is important as a health and development issue at a national, regional, and local level.\n ##### In some regions, it has been shown that investments in water supply and sanitation can yield a net economic benefit, since the reductions in adverse health effects and health care costs outweigh the costs of undertaking the interventions.\n ##### This classification project involves building a model to evaluate water potability to help you access safe drinking water. 🚰💙")
 
 elif choose == 'Predictions':
     st.write('### Water Potability System Predictions:')
@@ -104,7 +104,7 @@ elif choose == 'Predictions':
         
         while (inputs['Solids'] == 0 or inputs['Conductivity'] == 0):
             if ((inputs['Solids'] == 0 or inputs['Conductivity'] == 0) and count<1):
-                st.write('Solids and Conductivity Value Cannot Equal Zero.')
+                st.write('Solids and Conductivity Value Cannot Equal Zero. ❌')
                 count+=1
             elif ((inputs['Solids'] == 0 or inputs['Conductivity'] == 0) and count >= 1):
                 continue
@@ -148,18 +148,18 @@ elif choose == 'Graphs':
     st.write('---')
     st.set_option('deprecation.showPyplotGlobalUse', False)
     st.write("### Confusion Matrix Random Forest:")
-    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System-\Graphs\Matrix RF.png")
+    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System\Graphs\Matrix RF.png")
     st.write("### Confusion Matrix Decision Tree:")
-    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System-\Graphs\Matix DT.png")
+    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System\Graphs\Matix DT.png")
     st.write("### Confusion Matrix Support Vector Machine:")
-    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System-\Graphs\Matrix SVM.png")
+    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System\Graphs\Matrix SVM.png")
     st.write("### Confusion Matrix Logistic Regression:")
-    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System-\Graphs\Matrix LR.png")
+    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System\Graphs\Matrix LR.png")
     st.write("### Confusion Matrix KNN:")
-    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System-\Graphs\Matrix KNN.png")
+    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System\Graphs\Matrix KNN.png")
     st.write("### Box Plot Graph Before Scaling:")
-    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System-\Graphs\Original box plot.png")
+    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System\Graphs\Original box plot.png")
     st.write("### Box Plot Graph After Scaling:")
-    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System-\Graphs\Boxplots of Scaled Water Quality Parameters.png")
+    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System\Graphs\Boxplots of Scaled Water Quality Parameters.png")
     st.write("### Correlation Map:")
-    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System-\Graphs\Heat map4.png")
+    st.image("D:\Water Potability System (AI)'24\Water-Potability-Prediction-System\Graphs\Heat map4.png")
