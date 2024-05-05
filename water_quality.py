@@ -49,7 +49,7 @@ models = {
 
 # Define the columns
 columns = ['ph', 'Hardness', 'Solids', 'Chloramines', 'Sulfate', 'Conductivity', 'Organic_carbon',
-            'Trihalomethanes', 'Turbidity', 'TDS', 'Chloramines_to_Solids_Ratio', 'Chloramines_per_Conductivity']
+            'Trihalomethanes', 'Turbidity']
 
 
 ######################## Main Display ########################
@@ -101,47 +101,21 @@ elif choose == 'Predictions':
     st.write('### Water Potability System Predictions:')
     st.write('---')
 
-    # Add input fields for all columns except the derived column
+    # Add input fields for all columns and take input from user
     inputs = {}
     for col in columns:
-    
-        # Set value of derived columns to 0 until they're calculated later
-        if col in ['TDS', 'Chloramines_to_Solids_Ratio', 'Chloramines_per_Conductivity']:
-            inputs[col] = 0
-        
-        # Take value from user input for the rest
-        else:
-            inputs[col] = st.number_input(f'**Enter {col}**', min_value=0.0, format="%.9f")
+        inputs[col] = st.number_input(f'**Enter {col}**', min_value=0.0, format="%.9f")
 
-    # Detect if Display Derived Values is pressed
+    # Detect if Enter Values is pressed
     session_state = st.session_state
-    if 'display_derived_values' not in session_state:
-        session_state.display_derived_values = False
+    if 'enter_values' not in session_state:
+        session_state.enter_values = False
     
     # Toggles button so that when it's pressed, it stays pressed and doesn't refresh.
-    if st.button('Display Derived Values'):
-        session_state.display_derived_values = True
+    if st.button('Enter Values'):
+        session_state.enter_values = True
 
-    if session_state.display_derived_values:
-        count =0
-        # Handling zero division for Solids and Conductivity
-        while (inputs['Solids'] == 0 or inputs['Conductivity'] == 0):
-            if ((inputs['Solids'] == 0 or inputs['Conductivity'] == 0) and count<1):
-                st.write('Solids and Conductivity Value Cannot Equal Zero. ❌')
-                count+=1
-            # Prevent printing message multiple times
-            elif ((inputs['Solids'] == 0 or inputs['Conductivity'] == 0) and count >= 1):
-                continue
-        
-        # Calculate and display derived columns
-        inputs['TDS'] = inputs['Solids'] + inputs['Chloramines'] + inputs['Sulfate'] + inputs['Trihalomethanes']
-        inputs['Chloramines_to_Solids_Ratio'] = inputs['Chloramines'] / inputs['Solids']
-        inputs['Chloramines_per_Conductivity'] = inputs['Chloramines'] / inputs['Conductivity']
-        st.write('Derived Columns:')
-        st.write('TDS:', inputs['TDS'])
-        st.write('Chloramines to Solids Ratio:', inputs['Chloramines_to_Solids_Ratio'])
-        st.write('Chloramines per Conductivity:', inputs['Chloramines_per_Conductivity'])
-        
+    if session_state.enter_values:       
         # Create list with columns values from inputs dictionary
         values_list = [] 
         for col, value in inputs.items():
