@@ -123,7 +123,7 @@ elif choose == 'Predictions':
             values_list.append(value)
         
         # Convert the list to a NumPy array
-        X = np.array([values_list])
+        X = np.array([values_list]).reshape(1, -1)
         
         # Select model using dropdown menu
         selected_model = st.selectbox("Select Model", list(models.keys()), key='model_selection')
@@ -134,10 +134,10 @@ elif choose == 'Predictions':
             y_pred = predict_potability(models[selected_model], X)
 
             # Display the predicted potability
-            if y_pred[0] == 1:
+            if y_pred == 1:
                 st.write("#### Our Prediction Says: This Water Is Safe To Drink. 💙")
                 st.balloons()
-            elif y_pred[0] == 0:
+            elif y_pred == 0:
                 st.write("#### Our Prediction Says: This Water Isn't Safe To Drink. ❌")
 
 # Graphs Page
