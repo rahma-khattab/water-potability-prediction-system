@@ -26,15 +26,15 @@ def load_lottie(url):
 
 
 # Loading the scaler
-scaler = joblib.load("D:\FCIS\AI\water-potability-prediction-system\\scaler.joblib")
+scaler = joblib.load("D:\Water Potability System (AI)'24\water-potability-prediction-system\\scaler.joblib")
 
 # Loading the models 
-rf_model = joblib.load("D:\FCIS\AI\water-potability-prediction-system\\rf.joblib")
-GB_clf_model = joblib.load("D:\FCIS\AI\water-potability-prediction-system\GB.joblib")
-decision_tree_model = joblib.load("D:\FCIS\AI\water-potability-prediction-system\decision_tree.joblib")
-knn_model = joblib.load("D:\FCIS\AI\water-potability-prediction-system\knn.joblib")
-log_reg_model = joblib.load("D:\FCIS\AI\water-potability-prediction-system\log_reg.joblib")
-svm_model = joblib.load("D:\FCIS\AI\water-potability-prediction-system\svm.joblib")
+rf_model = joblib.load("D:\Water Potability System (AI)'24\water-potability-prediction-system\\rf.joblib")
+GB_clf_model = joblib.load("D:\Water Potability System (AI)'24\water-potability-prediction-system\GB.joblib")
+decision_tree_model = joblib.load("D:\Water Potability System (AI)'24\water-potability-prediction-system\decision_tree.joblib")
+knn_model = joblib.load("D:\Water Potability System (AI)'24\water-potability-prediction-system\knn.joblib")
+log_reg_model = joblib.load("D:\Water Potability System (AI)'24\water-potability-prediction-system\log_reg.joblib")
+svm_model = joblib.load("D:\Water Potability System (AI)'24\water-potability-prediction-system\svm.joblib")
 
 # Define models dictionary
 models = {
@@ -148,49 +148,53 @@ elif choose == 'Graphs':
 
     # Confusion Matrices
     st.write("### Confusion Matrix Random Forest:")
-    st.image("D:\FCIS\AI\water-potability-prediction-system\Graphs\Matrix RF.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Matrix RF.png")
 
     st.write("### Confusion Matrix Decision Tree:")
-    st.image("D:\FCIS\AI\water-potability-prediction-system\Graphs\Matix DT.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Matix DT.png")
 
     st.write("### Confusion Matrix Support Vector Machine:")
-    st.image("D:\FCIS\AI\water-potability-prediction-system\Graphs\Matrix SVM.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Matrix SVM.png")
 
     st.write("### Confusion Matrix Logistic Regression:")
-    st.image("D:\FCIS\AI\water-potability-prediction-system\Graphs\Matrix LR.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Matrix LR.png")
 
     st.write("### Confusion Matrix KNN:")
-    st.image("D:\FCIS\AI\water-potability-prediction-system\Graphs\Matrix KNN.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Matrix KNN.png")
     
     st.write("### Confusion Matrix Gradient Boosting:")
-    st.image("D:\FCIS\AI\water-potability-prediction-system\Graphs\Matrix GB.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Matrix GB.png")
     
 
     # Pie chart
     st.write("### Distribution of potability class:")
     st.write("##### Before Oversampling:")
-    st.image("D:\FCIS\AI\water-potability-prediction-system\Graphs\True and false biased.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\True and false biased.png")
 
     st.write("##### After Oversampling:")
-    st.image("D:\FCIS\AI\water-potability-prediction-system\Graphs\True and false oversampled.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\True and false oversampled.png")
     
 
     # Box Plot
+    # Box Plot
+    st.write("### Box Plot Graph Before Scaling:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Boxplots of non Scaled Water Quality Parameters.png")
     st.write("### Box Plot Graph After Scaling:")
-    st.image("D:\FCIS\AI\water-potability-prediction-system\Graphs\Boxplots of Scaled Water Quality Parameters.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Boxplots of Scaled Water Quality Parameters.png")
 
 
     # Correlation Map
-    st.write("### Correlation Map:")
-    st.image("D:\FCIS\AI\water-potability-prediction-system\Graphs\Heat map.png")
-
+    st.write("### Correlation Map Before Oversampling And Scaling:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Heat map.png")
+    st.write("### Correlation Map After Oversampling And Scaling:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Heat map upsampled and scaled.png")
 
     # Histograms
     st.write("### Sulfate Histogram:")
-    st.image("D:\FCIS\AI\water-potability-prediction-system\Graphs\Sulfate Histogram.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Sulfate Histogram.png")
 
     st.write("### ph Histogram:")
-    st.image("D:\FCIS\AI\water-potability-prediction-system\Graphs\ph Histogram.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\ph Histogram.png")
 
     st.write("### Trihalomethanes Histogram:")
-    st.image("D:\FCIS\AI\water-potability-prediction-system\Graphs\Trihalomethanes Histogram.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Trihalomethanes Histogram.png")
