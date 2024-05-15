@@ -46,6 +46,16 @@ models = {
     "SVM": svm_model
 }
 
+# Define confusion matrices dictionary
+confusionMatrices = {
+    "GradientBoostingClassifier": "D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Matrix GB.png",
+    "Random Forest": "D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Matrix RF.png",
+    "Decision Tree": "D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Matix DT.png",
+    "KNN": "D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Matrix KNN.png",
+    "Logistic Regression": "D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Matrix LR.png",
+    "SVM": "D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Matrix SVM.png"
+}
+
 # Define the columns
 columns = ['ph', 'Hardness', 'Solids', 'Chloramines', 'Sulfate', 'Conductivity', 'Organic_carbon',
             'Trihalomethanes', 'Turbidity']
@@ -138,14 +148,76 @@ elif choose == 'Predictions':
                 st.balloons()
             elif y_pred == 0:
                 st.write("#### Our Prediction Says: This Water Isn't Safe To Drink. ❌")
+            st.write("#### This is the confussion matrix for the selected model:")
+            st.write(" ")
+            st.image(confusionMatrices[selected_model])
 
 # Graphs Page
 elif choose == 'Graphs':
     st.write('### Water Potability System Graphs :')
     st.write('---')
-    st.set_option('deprecation.showPyplotGlobalUse', False)
+    
+    
+    # Pie chart
+    st.write("### Distribution of potability class:")
+    st.write("##### Before Oversampling:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\True and false biased.png")
+
+    st.write("##### After Oversampling:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\True and false oversampled.png")
+    
+
+    # Box Plot
+    st.write("### Box Plot Graph Before Scaling:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Boxplots of non Scaled Water Quality Parameters.png")
+    st.write("### Box Plot Graph After Scaling:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Boxplots of Scaled Water Quality Parameters.png")
 
 
+    # Correlation Map
+    st.write("### Correlation Map Before Oversampling And Scaling:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Heat map.png")
+    
+
+    # Histograms
+    st.write("### Histograms Of Unscaled Data Of Columns Containing Null Values:")
+    st.write("##### Sulfate Histogram:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Sulfate Histogram.png")
+
+    st.write("##### ph Histogram:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\ph Histogram.png")
+
+    st.write("##### Trihalomethanes Histogram:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Trihalomethanes Histogram.png")
+    
+    st.write("### Histograms Of Scaled Data:")
+    st.write("##### Chloromines Histogram:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramChloromines.png")
+    
+    st.write("##### Conductivity Histogram:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramConduct.png")
+    
+    st.write("##### Hardness Histogram:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramHardness.png")
+    
+    st.write("##### Organic Carbon Histogram:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramOrganicCO2.png")
+    
+    st.write("##### PH Histogram:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramPH.png")
+    
+    st.write("##### Solids Histogram:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramSolids.png")
+    
+    st.write("##### Sulphate Histogram:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramSulphate.png")
+    
+    st.write("##### Trihalomethanes Histogram:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramTrihalo.png")
+    
+    st.write("##### Turbidiry Histogram:")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramTurbidity.png")
+    
     # Confusion Matrices
     st.write("### Confusion Matrix Random Forest:")
     st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Matrix RF.png")
@@ -164,37 +236,3 @@ elif choose == 'Graphs':
     
     st.write("### Confusion Matrix Gradient Boosting:")
     st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Matrix GB.png")
-    
-
-    # Pie chart
-    st.write("### Distribution of potability class:")
-    st.write("##### Before Oversampling:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\True and false biased.png")
-
-    st.write("##### After Oversampling:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\True and false oversampled.png")
-    
-
-    # Box Plot
-    # Box Plot
-    st.write("### Box Plot Graph Before Scaling:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Boxplots of non Scaled Water Quality Parameters.png")
-    st.write("### Box Plot Graph After Scaling:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Boxplots of Scaled Water Quality Parameters.png")
-
-
-    # Correlation Map
-    st.write("### Correlation Map Before Oversampling And Scaling:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Heat map.png")
-    st.write("### Correlation Map After Oversampling And Scaling:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Heat map upsampled and scaled.png")
-
-    # Histograms
-    st.write("### Sulfate Histogram:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Sulfate Histogram.png")
-
-    st.write("### ph Histogram:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\ph Histogram.png")
-
-    st.write("### Trihalomethanes Histogram:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\Trihalomethanes Histogram.png")
