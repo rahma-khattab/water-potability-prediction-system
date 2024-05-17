@@ -74,14 +74,14 @@ st.set_page_config(
 st.markdown("<h1 style='text-align: center;'>Water Potability Prediction System</h1>", unsafe_allow_html=True)
 
 # Display animation at the top
-lottie_link = "https://lottie.host/12d4c21a-4d80-44bf-bee9-f12771920386/ho13u1DTVB.json"
-animation = load_lottie(lottie_link)
+#lottie_link = "https://lottie.host/12d4c21a-4d80-44bf-bee9-f12771920386/ho13u1DTVB.json"
+#animation = load_lottie(lottie_link)
 
 # Error handling for animation
-if animation is not None:
-    st_lottie(animation, speed=1, height=300, key="initial")
-else:
-    st.write("Failed to load animation")
+# if animation is not None:
+#     st_lottie(animation, speed=1, height=300, key="initial")
+# else:
+#     st.write("Failed to load animation")
 
 
 # Sidebar Design
@@ -192,31 +192,31 @@ elif choose == 'Graphs':
     
     st.write("### Histograms Of Scaled Data:")
     st.write("##### Chloromines Histogram:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramChloromines.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\HistogramChloromines.png")
     
     st.write("##### Conductivity Histogram:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramConduct.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\HistogramConduct.png")
     
     st.write("##### Hardness Histogram:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramHardness.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\HistogramHardness.png")
     
     st.write("##### Organic Carbon Histogram:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramOrganicCO2.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\HistogramOrganicCO2.png")
     
     st.write("##### PH Histogram:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramPH.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\HistogramPH.png")
     
     st.write("##### Solids Histogram:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramSolids.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\HistogramSolids.png")
     
     st.write("##### Sulphate Histogram:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramSulphate.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\HistogramSulphate.png")
     
     st.write("##### Trihalomethanes Histogram:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramTrihalo.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\HistogramTrihalo.png")
     
     st.write("##### Turbidiry Histogram:")
-    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\HistogramTurbidity.png")
+    st.image("D:\Water Potability System (AI)'24\water-potability-prediction-system\Graphs\HistogramTurbidity.png")
     
     # Confusion Matrices
     st.write("### Confusion Matrix Random Forest:")
