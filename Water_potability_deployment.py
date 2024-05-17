@@ -40,7 +40,7 @@ svm_model = joblib.load("Models\svm.joblib")
 
 # Define models dictionary
 models = {
-    "GradientBoostingClassifier": GB_clf_model,
+    "Gradient Boosting": GB_clf_model,
     "Random Forest": rf_model,
     "Decision Tree": decision_tree_model,
     "KNN": knn_model,
@@ -50,7 +50,7 @@ models = {
 
 # Define confusion matrices dictionary
 confusionMatrices = {
-    "GradientBoostingClassifier": "Graphs\Matrix GB.png",
+    "Gradient Boosting": "Graphs\Matrix GB.png",
     "Random Forest": "Graphs\Matrix RF.png",
     "Decision Tree": "Graphs\Matix DT.png",
     "KNN": "Graphs\Matrix KNN.png",
@@ -59,16 +59,16 @@ confusionMatrices = {
 }
 
 accuracies = {
-    "GradientBoostingClassifier": "Models\gradient_boosting.txt",
-    "Random Forest": "Models\Random_forest.txt",
-    "Decision Tree": "Models\Decision Tree.txt",
-    "KNN": "Models\k_n_n.txt",
-    "Logistic Regression": "Models\Logistic Regression.txt",
-    "SVM": "Models\Support Vector Machine.txt"
+    "Gradient Boosting": "Accuracies\gradient_boosting.txt",
+    "Random Forest": "Accuracies\Random_forest.txt",
+    "Decision Tree": "Accuracies\Decision Tree.txt",
+    "KNN": "Accuracies\k_n_n.txt",
+    "Logistic Regression": "Accuracies\Logistic Regression.txt",
+    "SVM": "Accuracies\Support Vector Machine.txt"
 }
 
 # Define the columns
-columns = ['ph', 'Hardness', 'Solids', 'Chloramines', 'Sulfate', 'Conductivity', 'Organic_carbon',
+columns = ['PH', 'Hardness', 'Solids', 'Chloramines', 'Sulfate', 'Conductivity', 'Organic carbon',
             'Trihalomethanes', 'Turbidity']
 
 
@@ -119,22 +119,31 @@ if choose == 'About':
 elif choose == 'Predictions':
     st.write('### Water Potability System Predictions:')
     st.write('---')
-    
 
     # Select model using dropdown menu
-    selected_model_1 = st.selectbox("Select Model", list(models.keys()), key='model_selection_1  ')
+    selected_model = st.selectbox("Select Model", list(models.keys()), key='model_selection')
     
     # Open the file in read mode
-    file_path = accuracies[selected_model_1]  # Get the file path from the dictionary
+    file_path = accuracies[selected_model]  # Get the file path from the dictionary
     with open(file_path, "r") as file:
         # Read the contents of the file
         file_contents = file.read()
+        session_state = st.session_state
+        
+    if 'Show_matrix_and_accuracy' not in session_state:
+        session_state.Show_matrix_and_accuracy = False
+    
+    # Toggles button so that when it's pressed, it stays pressed and doesn't refresh.
     if st.button('Show matrix and accuracy'):
+        session_state.Show_matrix_and_accuracy = True
+        
+    if session_state.Show_matrix_and_accuracy:
         # Display accuracy and confussion matrix using the selected model
-        st.write("#### This is the accuracy of the selected model: ", file_contents, '%')
-        st.write("#### This is the confussion matrix for the selected model:")
+        st.write("##### This is the accuracy of the", selected_model , " : ", file_contents, '%')
         st.write(" ")
-        st.image(confusionMatrices[selected_model_1])
+        st.write("##### This is the confussion matrix for the ", selected_model ,  " :")
+        st.write(" ")
+        st.image(confusionMatrices[selected_model])
     st.write('---')
 
     # Add input fields for all columns and take input from user
@@ -142,42 +151,24 @@ elif choose == 'Predictions':
     for col in columns:
         inputs[col] = st.number_input(f'**Enter {col}**', min_value=0.0, format="%.9f")
 
-    # Detect if Enter Values is pressed
-    session_state = st.session_state
-    if 'enter_values' not in session_state:
-        session_state.enter_values = False
-    
-    # Toggles button so that when it's pressed, it stays pressed and doesn't refresh.
-    if st.button('Enter Values'):
-        session_state.enter_values = True
-
-    if session_state.enter_values:       
+    if st.button('Predict'):       
         # Create list with columns values from inputs dictionary
         values_list = [] 
         for col, value in inputs.items():
             # Append each value to the list
             values_list.append(value)
-        
+            
         # Convert the list to a NumPy array
         X = np.array([values_list]).reshape(1, -1)
-        
-        # Select model using dropdown menu
-        selected_model = st.selectbox("Select Model", list(models.keys()), key='model_selection')
-        
-        # Button to trigger prediction
-        if st.button('Predict'):
-            # Predict potability using the selected model
-            y_pred = predict_potability(models[selected_model], X)
 
-            # Display the predicted potability
-            if y_pred == 1:
-                st.write("#### Our Prediction Says: This Water Is Safe To Drink. 💙")
-                st.balloons()
-            elif y_pred == 0:
-                st.write("#### Our Prediction Says: This Water Isn't Safe To Drink. ❌")
-            st.write("#### This is the confussion matrix for the selected model:")
-            st.write(" ")
-            st.image(confusionMatrices[selected_model])
+        # Predict potability using the selected model
+        y_pred = predict_potability(models[selected_model], X)        
+        # Display the predicted potability
+        if y_pred == 1:
+            st.write("#### Our Prediction Says: This Water Is Safe To Drink. 💙")
+            st.balloons()
+        elif y_pred == 0:
+            st.write("#### Our Prediction Says: This Water Isn't Safe To Drink. ❌")
 
 # Graphs Page
 elif choose == 'Graphs':
